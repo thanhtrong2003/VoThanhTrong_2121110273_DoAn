@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms
 {
     public partial class Form1 : Form
     {
+        Function fn = new Function();
+        String query;
         public Form1()
         {
             InitializeComponent();
@@ -24,12 +27,15 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtUsername.Text == "thanhtrong" && txtPassword.Text == "123")
+
+            query = "select username , pass from employee where username ='" + txtUsername.Text + "' and pass='" + txtPassword.Text +"' ";
+            DataSet ds = fn.getData(query);
+            if (ds.Tables[0].Rows.Count != 0)
             {
                 labelError.Visible = false;
-                Dashboard ds = new Dashboard();
+                Dashboard dash = new Dashboard();
                 this.Hide();
-                ds.Show();
+                dash.Show();
                 
             }
             else
