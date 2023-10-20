@@ -50,7 +50,7 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
                 String password = txtPassword.Text;
 
 
-                query = "insert into employee (ename,mobile,gender,emailid,username,pass) values ('" + name + "'," + phone + ",'" + email + "','" + gender + "','" + username + "','" + password + "')";
+                query = "insert into employee (ename,mobile,gender,emailid,username,pass) values ('" + name + "'," + phone + ",'" + gender + "','" + email + "','" + username + "','" + password + "')";
                 fn.setData(query, "Đăng ký nhân viên thành công");
 
                 clearAll();
@@ -101,6 +101,11 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
         private void UC_Employee_Leave(object sender, EventArgs e)
         {
             clearAll();
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
