@@ -327,8 +327,9 @@
             this.txtGenter.ForeColor = System.Drawing.Color.Black;
             this.txtGenter.ItemHeight = 30;
             this.txtGenter.Items.AddRange(new object[] {
-            "Nam",
-            "Nữ"});
+            "Male",
+            "Female",
+            "Orther"});
             this.txtGenter.Location = new System.Drawing.Point(37, 555);
             this.txtGenter.Name = "txtGenter";
             this.txtGenter.Size = new System.Drawing.Size(503, 36);

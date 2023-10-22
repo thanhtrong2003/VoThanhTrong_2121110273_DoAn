@@ -45,6 +45,7 @@
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             this.btbDeleteRoom = new Guna.UI2.WinForms.Guna2Button();
+            this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +64,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(1157, 133);
+            this.label2.Location = new System.Drawing.Point(1105, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 25);
             this.label2.TabIndex = 2;
@@ -81,7 +82,7 @@
             this.txtRoomNo.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtRoomNo.ForeColor = System.Drawing.Color.Black;
             this.txtRoomNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtRoomNo.Location = new System.Drawing.Point(1162, 195);
+            this.txtRoomNo.Location = new System.Drawing.Point(1110, 164);
             this.txtRoomNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtRoomNo.Name = "txtRoomNo";
             this.txtRoomNo.PasswordChar = '\0';
@@ -97,7 +98,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(1157, 272);
+            this.label3.Location = new System.Drawing.Point(1105, 241);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(127, 25);
             this.label3.TabIndex = 4;
@@ -116,7 +117,7 @@
             this.txtRoomType.Items.AddRange(new object[] {
             "Ac",
             "Non-Ac"});
-            this.txtRoomType.Location = new System.Drawing.Point(1162, 344);
+            this.txtRoomType.Location = new System.Drawing.Point(1110, 313);
             this.txtRoomType.Name = "txtRoomType";
             this.txtRoomType.Size = new System.Drawing.Size(360, 36);
             this.txtRoomType.TabIndex = 5;
@@ -133,7 +134,7 @@
             this.txtPrice.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrice.ForeColor = System.Drawing.Color.Black;
             this.txtPrice.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPrice.Location = new System.Drawing.Point(1162, 654);
+            this.txtPrice.Location = new System.Drawing.Point(1110, 623);
             this.txtPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.PasswordChar = '\0';
@@ -147,7 +148,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(1157, 587);
+            this.label4.Location = new System.Drawing.Point(1105, 556);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 25);
             this.label4.TabIndex = 7;
@@ -166,7 +167,7 @@
             this.txtBed.Items.AddRange(new object[] {
             "Single bed",
             "Double bed"});
-            this.txtBed.Location = new System.Drawing.Point(1162, 508);
+            this.txtBed.Location = new System.Drawing.Point(1110, 477);
             this.txtBed.Name = "txtBed";
             this.txtBed.Size = new System.Drawing.Size(360, 36);
             this.txtBed.TabIndex = 10;
@@ -176,7 +177,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(1157, 436);
+            this.label5.Location = new System.Drawing.Point(1105, 405);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(126, 25);
             this.label5.TabIndex = 9;
@@ -195,7 +196,7 @@
             this.btnAddRoom.FillColor = System.Drawing.Color.White;
             this.btnAddRoom.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddRoom.ForeColor = System.Drawing.Color.Black;
-            this.btnAddRoom.Location = new System.Drawing.Point(1284, 735);
+            this.btnAddRoom.Location = new System.Drawing.Point(866, 735);
             this.btnAddRoom.Name = "btnAddRoom";
             this.btnAddRoom.Size = new System.Drawing.Size(238, 68);
             this.btnAddRoom.TabIndex = 11;
@@ -259,6 +260,8 @@
             this.DataGridView1.ThemeStyle.RowsStyle.Height = 28;
             this.DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.DataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
+            this.DataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
             // btbDeleteRoom
             // 
@@ -273,17 +276,38 @@
             this.btbDeleteRoom.FillColor = System.Drawing.Color.White;
             this.btbDeleteRoom.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btbDeleteRoom.ForeColor = System.Drawing.Color.Black;
-            this.btbDeleteRoom.Location = new System.Drawing.Point(640, 702);
+            this.btbDeleteRoom.Location = new System.Drawing.Point(1110, 735);
             this.btbDeleteRoom.Name = "btbDeleteRoom";
             this.btbDeleteRoom.Size = new System.Drawing.Size(238, 68);
             this.btbDeleteRoom.TabIndex = 13;
             this.btbDeleteRoom.Text = "Xóa phòng";
             this.btbDeleteRoom.Click += new System.EventHandler(this.btbDeleteRoom_Click);
             // 
+            // btnEdit
+            // 
+            this.btnEdit.BorderRadius = 18;
+            this.btnEdit.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.btnEdit.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnEdit.CheckedState.ForeColor = System.Drawing.Color.White;
+            this.btnEdit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEdit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEdit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEdit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEdit.FillColor = System.Drawing.Color.White;
+            this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.Black;
+            this.btnEdit.Location = new System.Drawing.Point(1354, 735);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(238, 68);
+            this.btnEdit.TabIndex = 14;
+            this.btnEdit.Text = "Sửa phòng";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // UC_AddRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btbDeleteRoom);
             this.Controls.Add(this.DataGridView1);
             this.Controls.Add(this.btnAddRoom);
@@ -322,5 +346,6 @@
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2DataGridView DataGridView1;
         private Guna.UI2.WinForms.Guna2Button btbDeleteRoom;
+        private Guna.UI2.WinForms.Guna2Button btnEdit;
     }
 }

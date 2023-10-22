@@ -23,7 +23,7 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
             InitializeComponent();
 
         }
-              public bool IsRoomAvailable(string bedType, string roomType)
+        public bool IsRoomAvailable(string bedType, string roomType)
         {
             string query = $"SELECT COUNT(*) FROM rooms WHERE bed = '{bedType}' AND roomType = '{roomType}' AND booked = 'NO'";
             DataSet ds = fn.getData(query);
@@ -34,13 +34,13 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
         public void setComboBox(String query , ComboBox combo)
         {
             SqlDataReader sdr = fn.getForCombo(query);
-            if (sdr.HasRows)
+            if (sdr.HasRows) //kiểm tra dòng
             {
                 while (sdr.Read())
                 {
                     for (int i = 0; i < sdr.FieldCount; i++)
                     {
-                        combo.Items.Add(sdr.GetString(i));
+                        combo.Items.Add(sdr.GetString(i));//chuyển thành chuỗi , nếu có DateTime nó sẽ lỗi
                     }
                 }
             }
@@ -56,7 +56,7 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
             query = "SELECT DISTINCT roomType FROM rooms";
             setComboBox(query, txtRoom);
             query = "SELECT  DISTINCT roomNo FROM rooms";
-            setComboBox(query, txtRoomNo);
+            setComboBox(query, txtRoomNo);//truy vấn csdl và hiện thị dữ liệu liên quan
       
 
 
@@ -66,15 +66,15 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
         {
 
 
-            txtRoom.SelectedIndex = -1;
-            txtRoomNo.Items.Clear();
+            txtRoom.SelectedIndex = -1;//dùng cho combobox , không có mục nào được chọn
+            txtRoomNo.Items.Clear();// không có nội dung nài được chọn trong combox này
             txtPrice.Clear();
 
             
       
         }
 
-        private void txtRoom_SelectedIndexChanged(object sender, EventArgs e)
+        private void txtRoom_SelectedIndexChanged(object sender, EventArgs e)//Loại phòng
         {
         
             txtRoomNo.Items.Clear();

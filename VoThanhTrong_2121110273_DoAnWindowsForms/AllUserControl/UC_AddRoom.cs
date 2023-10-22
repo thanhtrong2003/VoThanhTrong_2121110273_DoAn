@@ -112,5 +112,58 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
         {
 
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (DataGridView1.SelectedRows.Count > 0) // Kiểm tra dòng mình chọn phải có
+            {
+                // Lấy dòng đang được chọn
+                DataGridViewRow row = DataGridView1.SelectedRows[0];
+
+                string roomno = row.Cells["roomNo"].Value.ToString();
+
+                if (txtRoomNo.Text != "" && txtRoomType.Text != "" && txtBed.Text != "" && txtPrice.Text != "")
+                {
+                    string type = txtRoomType.Text;
+                    string bed = txtBed.Text;
+                    Int64 price = Int64.Parse(txtPrice.Text);
+
+                    // Tạo truy vấn SQL để cập nhật dữ liệu vào cơ sở dữ liệu
+                    query = $"UPDATE rooms SET roomType='{type}', bed='{bed}', price='{price}' WHERE roomNo='{roomno}'";
+                    fn.setData(query, "Đã cập nhật thông tin phòng");
+
+                    // Tải lại dữ liệu
+                    UC_AddRoom_Load(this, null);
+                    clearAll();
+                }
+                else
+                {
+                    MessageBox.Show("Xin vui lòng nhập đủ thông tin", "Warning !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Xin vui lòng chọn một phòng để chỉnh sửa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Đảm bảo không phải là header
+            {
+                DataGridViewRow row = DataGridView1.Rows[e.RowIndex];
+
+                // Đổ dữ liệu từ dòng được chọn vào các trường nhập liệu
+                txtRoomNo.Text = row.Cells["roomNo"].Value.ToString();
+                txtRoomType.Text = row.Cells["roomType"].Value.ToString();
+                txtBed.Text = row.Cells["bed"].Value.ToString();
+                txtPrice.Text = row.Cells["price"].Value.ToString();
+            }
+        }
     }
 }
