@@ -33,7 +33,7 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
             if (ds.Tables[0].Rows[0][0].ToString() != "")
             {
                 Int64 num = int.Parse(ds.Tables[0].Rows[0][0].ToString());
-                labelToSet.Text = (num + 1).ToString();
+                labelToSet.Text = (num + 1).ToString();// lấy ra giá trị lớn nhất của bảng e , sau đó + thêm 1 và hiển thị
             }    
 
         }
@@ -94,6 +94,7 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
                     query = "delete from employee where eid = " + txtID.Text + "";
                     fn.setData(query, "Thông tin nhân viên đã được xóa");
                     tabEmployee_SelectedIndexChanged(this, null);
+                    txtID.Clear(); // Xóa giá trị trong txtID sau khi xóa
                 }
             }
         }
@@ -106,6 +107,17 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
         private void tabPage1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void guna2DataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Đảm bảo người dùng đã nhấp vào một dòng, không phải tiêu đề cột
+            {
+                DataGridViewRow row = guna2DataGridView4.Rows[e.RowIndex]; // Lấy dòng được chọn
+
+                // Đặt giá trị cho txtID từ cột chứa ID. Giả sử ID là cột đầu tiên, index sẽ là 0.
+                txtID.Text = row.Cells[0].Value.ToString();
+            }
         }
     }
 }

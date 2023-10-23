@@ -23,14 +23,14 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
         {
             query = "select customer.cid ,customer.cname ,customer.mobile , customer.nationality , customer.gender , customer.dob ,customer.idproof , customer.address,customer.checkin,rooms.roomNo , rooms.roomType , rooms.bed ,rooms.price from customer inner join rooms on customer.roomid = rooms.roomid where chekout = 'NO' ";
             DataSet ds = fn.getData(query);
-            guna2DataGridView1.DataSource = ds.Tables[0];
+            guna2DataGridView1.DataSource = ds.Tables[0];//Kiểm tra những khách hàng chưa thanh toán hiện lên bảng
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
         {
             query = "select customer.cid ,customer.cname ,customer.mobile , customer.nationality , customer.gender , customer.dob ,customer.idproof , customer.address,customer.checkin,rooms.roomNo , rooms.roomType , rooms.bed ,rooms.price from customer inner join rooms on customer.roomid = rooms.roomid where cname like '" + txtName.Text + "%' and chekout = 'NO'";
             DataSet ds = fn.getData(query);
-            guna2DataGridView1.DataSource = ds.Tables[0];
+            guna2DataGridView1.DataSource = ds.Tables[0];//Kiểm tra và lấy ra kí tự đầu tiên hiển thị lên bảng
         }
 
         int id;
@@ -67,7 +67,7 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
             txtCName.Clear();
             txtName.Clear();
             txtRoom.Clear();
-            txtCheckOutDate.ResetText();
+            txtCheckOutDate.ResetText(); // dùng cho ngày
         }
 
         private void UC_CheckOut_Leave(object sender, EventArgs e)

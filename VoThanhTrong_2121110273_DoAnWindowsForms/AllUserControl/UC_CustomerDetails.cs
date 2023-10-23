@@ -23,17 +23,17 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
         {
             if(txtSearchBy.SelectedIndex == 0)
             {
-                query = "select customer.cid ,customer.cname ,customer.mobile , customer.nationality , customer.gender , customer.dob ,customer.idproof , customer.address,customer.checkin,rooms.roomNo , rooms.roomType , rooms.bed ,rooms.price from customer inner join rooms on customer.roomid = rooms.roomid ";
+                query = "select customer.cid ,customer.cname ,customer.mobile , customer.nationality , customer.gender , customer.dob ,customer.idproof , customer.address,customer.checkin,rooms.roomNo , rooms.roomType , rooms.bed ,rooms.price from customer inner join rooms on customer.roomid = rooms.roomid "; // tất cả 
                 getRecord(query);
             }
             else if(txtSearchBy.SelectedIndex == 1)
             {
-                query = "select customer.cid ,customer.cname ,customer.mobile , customer.nationality , customer.gender , customer.dob ,customer.idproof , customer.address,customer.checkin,rooms.roomNo , rooms.roomType , rooms.bed ,rooms.price from customer inner join rooms on customer.roomid = rooms.roomid where checkout is null";
+                query = "select customer.cid ,customer.cname ,customer.mobile , customer.nationality , customer.gender , customer.dob ,customer.idproof , customer.address,customer.checkin,rooms.roomNo , rooms.roomType , rooms.bed ,rooms.price from customer inner join rooms on customer.roomid = rooms.roomid where checkout is null";//khách chưa thah toán
                 getRecord(query);
             }
             else if (txtSearchBy.SelectedIndex == 2)
             {
-                query = "select customer.cid ,customer.cname ,customer.mobile , customer.nationality , customer.gender , customer.dob ,customer.idproof , customer.address,customer.checkin,rooms.roomNo , rooms.roomType , rooms.bed ,rooms.price from customer inner join rooms on customer.roomid = rooms.roomid where checkout is not null";
+                query = "select customer.cid ,customer.cname ,customer.mobile , customer.nationality , customer.gender , customer.dob ,customer.idproof , customer.address,customer.checkin,rooms.roomNo , rooms.roomType , rooms.bed ,rooms.price from customer inner join rooms on customer.roomid = rooms.roomid where checkout is not null";// khách đã thanh toán
                 getRecord(query);
             }
         }
@@ -42,6 +42,11 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
         {
             DataSet ds = fn.getData(query);
             guna2DataGridView1.DataSource = ds.Tables[0];
+        }
+
+        private void UC_CustomerDetails_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
