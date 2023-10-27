@@ -10,7 +10,7 @@ namespace BO
     {
         public int cid { get; set; }
         public string cname { get; set; }
-        public long mobile { get; set; }
+        public Int64 mobile { get; set; }
         public string nationality { get; set; }
         public string gender { get; set; }
         public string dob { get; set; }

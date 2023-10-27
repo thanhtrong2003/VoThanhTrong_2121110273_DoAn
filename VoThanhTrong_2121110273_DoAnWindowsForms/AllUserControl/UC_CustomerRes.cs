@@ -100,11 +100,11 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
                 MessageBox.Show("Xin vui lòng nhập đầy đủ thông tin", "Thông tin", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            CustomerResBO customerResBO = new CustomerResBO();
-            customerResBLL.AddCustomer(customerResBO);
+         
+            customerResBLL.AddCustomer(txtName.Text, Int64.Parse(txtContact.Text), txtNationality.Text, txtGenter.Text, DateTime.Parse(txtDate.Text), txtId.Text, txtAddress.Text, DateTime.Parse(txtCheckin.Text), rid, txtRoomNo.Text);
 
 
-        MessageBox.Show("Số phòng " + txtRoomNo.Text + " Đăng ký khách hàng thành công", "Thông tin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Số phòng " + txtRoomNo.Text + " Đăng ký khách hàng thành công", "Thông tin", MessageBoxButtons.OK, MessageBoxIcon.Information);
             clearAll();
         }
         public void clearAll()

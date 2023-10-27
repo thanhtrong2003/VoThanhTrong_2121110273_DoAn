@@ -9,11 +9,12 @@ namespace BLL
 {
     public class CustomerResBLL
     {
-        CustomerResDAL customerResDAL = new CustomerResDAL();
+        private CustomerResDAL dal = new CustomerResDAL();
 
-        public void AddCustomer(CustomerResBO customer)
+        public void AddCustomer(string name, long mobile, string nationality, string gender, DateTime dob, string idProof, string address, DateTime checkin, int roomId, string roomNo)
         {
-            customerResDAL.InsertCustomer(customer);
+            // Bạn có thể thêm bất kỳ logic kiểm tra nghiệp vụ nào ở đây trước khi chèn vào cơ sở dữ liệu
+            dal.InsertCustomer(name, mobile, nationality, gender, dob, idProof, address, checkin, roomId, roomNo);
         }
     }
 }

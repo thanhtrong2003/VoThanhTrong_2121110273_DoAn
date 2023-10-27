@@ -11,6 +11,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using OfficeOpenXml;
 using BLL;
+using System.Drawing.Printing;
+using System.Xml.Linq;
+
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
 {
@@ -251,6 +256,53 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
 
                         package.SaveAs(new FileInfo(sfd.FileName));
                     }
+                }
+            }
+        }
+
+        private void ExportToPdf(DataGridView dgv, string filename)
+        {
+            BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, BaseFont.EMBEDDED);
+            PdfPTable pdfTable = new PdfPTable(dgv.Columns.Count);
+            pdfTable.DefaultCell.Padding = 3;
+            pdfTable.WidthPercentage = 100;
+            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+
+            foreach (DataGridViewColumn column in dgv.Columns)
+            {
+                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, new iTextSharp.text.Font(bf, 12)));
+                pdfTable.AddCell(cell);
+            }
+
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value != null)
+                        pdfTable.AddCell(new Phrase(cell.Value.ToString(), new iTextSharp.text.Font(bf, 10)));
+                }
+            }
+
+            using (FileStream stream = new FileStream(filename, FileMode.Create))
+            {
+                Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
+                PdfWriter.GetInstance(pdfDoc, stream);
+                pdfDoc.Open();
+                pdfDoc.Add(pdfTable);
+                pdfDoc.Close();
+                stream.Close();
+            }
+
+            MessageBox.Show("Đã xuất dữ liệu ra file PDF!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnExportToPdf_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "PDF files|*.pdf" })
+            {
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    ExportToPdf(DataGridView1, sfd.FileName);
                 }
             }
         }

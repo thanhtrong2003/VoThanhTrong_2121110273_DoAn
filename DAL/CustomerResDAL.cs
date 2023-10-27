@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using BO;
 namespace DAL
 {
@@ -11,40 +13,32 @@ namespace DAL
     {
         private readonly string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ADMIN\\Documents\\dbMyHotel.mdf;Integrated Security=True;Connect Timeout=30";
 
-        public void InsertCustomer(CustomerResBO customer)
+        public void InsertCustomer(string name, long mobile, string nationality, string gender, DateTime dob, string idProof, string address, DateTime checkin, int roomId, string roomNo)
         {
-          
-         
-            try
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                conn.Open();
+
+                using (SqlCommand cmd = new SqlCommand())
                 {
-                    conn.Open();
+                    cmd.Connection = conn;
+                    cmd.CommandText = @"insert into customer (cname, mobile, nationality, gender, dob, idproof, address, checkin, roomid) 
+                          values (@name, @mobile, @national, @gender, @date, @idproof, @address, @checkin, @rid);
+                          update rooms set booked = 'YES' where roomNo = @roomNo;";
 
-                    string cmdText = @"insert into customer (cname, mobile, nationality, gender, dob, idproof, address, checkin, roomid) 
-                                       values (@cname, @mobile, @nationality, @gender, @dob, @idproof, @address, @checkin, @rid)";
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@mobile", mobile);
+                    cmd.Parameters.AddWithValue("@national", nationality);
+                    cmd.Parameters.AddWithValue("@gender", gender);
+                    cmd.Parameters.AddWithValue("@date", dob);
+                    cmd.Parameters.AddWithValue("@idproof", idProof);
+                    cmd.Parameters.AddWithValue("@address", address);
+                    cmd.Parameters.AddWithValue("@checkin", checkin);
+                    cmd.Parameters.AddWithValue("@rid", roomId);
+                    cmd.Parameters.AddWithValue("@roomNo", roomNo);
 
-                    using (SqlCommand cmd = new SqlCommand(cmdText, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@cname", customer.cname);
-
-                        cmd.Parameters.AddWithValue("@mobile", customer.mobile);
-                        cmd.Parameters.AddWithValue("@nationality", customer.nationality);
-                        cmd.Parameters.AddWithValue("@gender", customer.gender);
-                        cmd.Parameters.AddWithValue("@dob", customer.dob);
-                        cmd.Parameters.AddWithValue("@idproof", customer.idproof);
-                        cmd.Parameters.AddWithValue("@address", customer.address);
-                        cmd.Parameters.AddWithValue("@checkin", customer.checkin);
-                        cmd.Parameters.AddWithValue("@rid", customer.roomid);
-
-                        cmd.ExecuteNonQuery();
-                    }
+                    cmd.ExecuteNonQuery();
                 }
-            }
-            catch (Exception ex)
-            {
-                // Xử lý hoặc ghi log ngoại lệ tại đây
-                throw;  // hoặc bạn có thể re-throw ngoại lệ nếu muốn
             }
         }
     }

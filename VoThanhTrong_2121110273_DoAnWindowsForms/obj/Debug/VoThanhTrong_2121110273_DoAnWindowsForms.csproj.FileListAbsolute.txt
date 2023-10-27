@@ -203,3 +203,6 @@ D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\bin\Debug\BO.dll
 D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\bin\Debug\DAL.dll
 D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\bin\Debug\BO.pdb
 D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\bin\Debug\DAL.pdb
+D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\bin\Debug\BouncyCastle.Crypto.dll
+D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\bin\Debug\itextsharp.dll
+D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\bin\Debug\itextsharp.xml
