@@ -1,0 +1,11 @@
+D:\DoAn20-10\BLL\bin\Debug\BLL.dll
+D:\DoAn20-10\BLL\bin\Debug\BLL.pdb
+D:\DoAn20-10\BLL\bin\Debug\DAL.dll
+D:\DoAn20-10\BLL\bin\Debug\DAL.pdb
+D:\DoAn20-10\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+D:\DoAn20-10\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\DoAn20-10\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\DoAn20-10\BLL\obj\Debug\BLL.dll
+D:\DoAn20-10\BLL\obj\Debug\BLL.pdb
+D:\DoAn20-10\BLL\bin\Debug\BO.dll
+D:\DoAn20-10\BLL\bin\Debug\BO.pdb

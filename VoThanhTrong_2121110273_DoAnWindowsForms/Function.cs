@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
-using System.Windows.Forms;
+
 
 
 namespace VoThanhTrong_2121110273_DoAnWindowsForms
 {
-     class Function
+    public class Function
     {
         protected SqlConnection getConnection()
         {
@@ -18,7 +18,7 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms
             SqlConnection con = new SqlConnection();
             con.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ADMIN\\Documents\\dbMyHotel.mdf;Integrated Security=True;Connect Timeout=30";
             return con;
-         }
+        }
 
         //Data set là kiểu trả về của phương thức , biểu thị phương thức này là một đối tượng
         //getData là tên phương thức
@@ -36,7 +36,7 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms
         }
 
         //Hàm thiết lập dữ liệu
-        public void setData(String query , string message)
+        public void setData(String query, string message)
         {
             SqlConnection con = getConnection();//Tạo đối tượng kết nối 
             SqlCommand cmd = new SqlCommand();//Tạo đối tượng thực thi
@@ -46,7 +46,18 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms
             cmd.ExecuteNonQuery();//Thực thi (câu này không dùng cho Insert , update , delete)
             con.Close();
 
-            MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public void setData2(String query)
+        {
+            SqlConnection con = getConnection();//Tạo đối tượng kết nối 
+            SqlCommand cmd = new SqlCommand();//Tạo đối tượng thực thi
+            cmd.Connection = con;//Tạo kết nối cho SqlCOmmand
+            con.Open();//Mở kết nối đến cơ sở dữ liệu.
+            cmd.CommandText = query;//Thiết lập kết nối câu truye vấn
+            cmd.ExecuteNonQuery();//Thực thi (câu này không dùng cho Insert , update , delete)
+            con.Close();
+
+
         }
 
         //là kiểu trả về của phương thức, biểu thị phương thức này trả về một đối tượng SqlDataReader.

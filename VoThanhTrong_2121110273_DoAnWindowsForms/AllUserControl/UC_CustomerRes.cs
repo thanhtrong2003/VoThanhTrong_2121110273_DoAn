@@ -1,4 +1,5 @@
-﻿using Microsoft.SqlServer.Server;
+﻿
+using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,14 +10,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using BLL;
+using System.Web.UI.WebControls;
+using BO;
 namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
 {
     public partial class UC_CustomerRes : UserControl
     {
 
-        Function fn = new Function();
-        String query;
+        CustomerResBLL customerResBLL = new CustomerResBLL();
+        RoomsBLL roomsBLL = new RoomsBLL();
 
         public UC_CustomerRes()
         {
@@ -25,43 +28,24 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
         }
         public bool IsRoomAvailable(string bedType, string roomType)
         {
-            string query = $"SELECT COUNT(*) FROM rooms WHERE bed = '{bedType}' AND roomType = '{roomType}' AND booked = 'NO'";
-            DataSet ds = fn.getData(query);
-            int count = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
-            return count > 0;
+           return  roomsBLL.GetAvailableRooms(bedType, roomType);
         }
 
-        public void setComboBox(String query , ComboBox combo)
+        public void setComboBox(List<string> items, ComboBox combo)
         {
-            SqlDataReader sdr = fn.getForCombo(query);
-            if (sdr.HasRows) //kiểm tra dòng
+            foreach (var item in items)
             {
-                while (sdr.Read())
-                {
-                    for (int i = 0; i < sdr.FieldCount; i++)
-                    {
-                        combo.Items.Add(sdr.GetString(i));//chuyển thành chuỗi , nếu có DateTime nó sẽ lỗi
-                    }
-                }
+                combo.Items.Add(item);
             }
-       
-            sdr.Close();
         }
-
 
         private void UC_CustomerRes_Load(object sender, EventArgs e)
         {
-            query = "SELECT DISTINCT bed FROM rooms";
-            setComboBox(query, txtBed);
-            query = "SELECT DISTINCT roomType FROM rooms";
-            setComboBox(query, txtRoom);
-            query = "SELECT  DISTINCT roomNo FROM rooms";
-            setComboBox(query, txtRoomNo);//truy vấn csdl và hiện thị dữ liệu liên quan
-      
-
-
+            setComboBox(roomsBLL.GetDistinctBeds(), txtBed);
+            setComboBox(roomsBLL.GetDistinctRoomTypes(), txtRoom);
+            setComboBox(roomsBLL.GetDistinctRoomNos(), txtRoomNo);
         }
-  
+
         private void txtBed_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -76,20 +60,20 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
 
         private void txtRoom_SelectedIndexChanged(object sender, EventArgs e)//Loại phòng
         {
-        
             txtRoomNo.Items.Clear();
-            query = "select roomNo from rooms where bed = '" + txtBed.Text + "' and roomType = '" + txtRoom.Text + "' and booked = 'NO' ";
-            setComboBox(query, txtRoomNo);
-     
+            List<string> roomNumbers = roomsBLL.GetRoomNumbersByType(txtBed.Text, txtRoom.Text);
+            txtRoomNo.Items.AddRange(roomNumbers.ToArray());
+
         }
 
         int rid;
         private void txtRoomNo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            query = "select price, roomid from rooms where roomNo= '" + txtRoomNo.Text + "'";
-            DataSet ds = fn.getData(query);
-            txtPrice.Text = ds.Tables[0].Rows[0][0].ToString();
-            rid = int.Parse(ds.Tables[0].Rows[0][1].ToString()); 
+            {
+                (string price, int roomId) = roomsBLL.GetRoomDetailsByRoomNumber(txtRoomNo.Text);
+                txtPrice.Text = price;
+                rid = roomId;
+            }
         }
    
 
@@ -116,33 +100,10 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
                 MessageBox.Show("Xin vui lòng nhập đầy đủ thông tin", "Thông tin", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            CustomerResBO customerResBO = new CustomerResBO();
+            customerResBLL.AddCustomer(customerResBO);
 
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ADMIN\\Documents\\dbMyHotel.mdf;Integrated Security=True;Connect Timeout=30";
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                conn.Open();
 
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.Connection = conn;
-                    cmd.CommandText = @"insert into customer (cname, mobile, nationality, gender, dob, idproof, address, checkin, roomid) 
-                          values (@name, @mobile, @national, @gender, @date, @idproof, @address, @checkin, @rid);
-                          update rooms set booked = 'YES' where roomNo = @roomNo;";
-
-                    cmd.Parameters.AddWithValue("@name", txtName.Text);
-                    cmd.Parameters.AddWithValue("@mobile", Int64.Parse(txtContact.Text));
-                    cmd.Parameters.AddWithValue("@national", txtNationality.Text);
-                    cmd.Parameters.AddWithValue("@gender", txtGenter.Text);
-                    cmd.Parameters.AddWithValue("@date", DateTime.Parse(txtDate.Text));
-                    cmd.Parameters.AddWithValue("@idproof", txtId.Text);
-                    cmd.Parameters.AddWithValue("@address", txtAddress.Text);
-                    cmd.Parameters.AddWithValue("@checkin", DateTime.Parse(txtCheckin.Text));
-                    cmd.Parameters.AddWithValue("@rid", rid);
-                    cmd.Parameters.AddWithValue("@roomNo", txtRoomNo.Text);
-
-                    cmd.ExecuteNonQuery();
-                }
-            }
         MessageBox.Show("Số phòng " + txtRoomNo.Text + " Đăng ký khách hàng thành công", "Thông tin", MessageBoxButtons.OK, MessageBoxIcon.Information);
             clearAll();
         }
@@ -166,6 +127,8 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms.AllUserControl
         {
             clearAll();
         }
+
+ 
 
     
     }

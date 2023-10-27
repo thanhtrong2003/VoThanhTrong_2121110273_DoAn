@@ -191,3 +191,15 @@ D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\obj\Debug\VoThanhTrong_212
 D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\obj\Debug\VoThanhTrong_2121110273_DoAnWindowsForms.csproj.CopyComplete
 D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\obj\Debug\VoThanhTrong_2121110273_DoAnWindowsForms.exe
 D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\obj\Debug\VoThanhTrong_2121110273_DoAnWindowsForms.pdb
+D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\bin\Debug\EPPlus.dll
+D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\bin\Debug\EPPlus.Interfaces.dll
+D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\bin\Debug\EPPlus.System.Drawing.dll
+D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\bin\Debug\EPPlus.xml
+D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\bin\Debug\BLL.dll
+D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\bin\Debug\BLL.pdb
+D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\bin\Debug\BO.dll
+D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\bin\Debug\DAL.dll
+D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\bin\Debug\BO.pdb
+D:\DoAn20-10\VoThanhTrong_2121110273_DoAnWindowsForms\bin\Debug\DAL.pdb

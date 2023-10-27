@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,15 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using BLL;
 namespace VoThanhTrong_2121110273_DoAnWindowsForms
 {
     public partial class Form1 : Form
     {
-        Function fn = new Function();
-        String query;
         private const int MaxLoginAttempts = 3;
         private int loginAttempts = 0;
+        private EmployeeBLL EmployeeDAL = new EmployeeBLL();
         public Form1()
         {
             InitializeComponent();
@@ -36,10 +36,8 @@ namespace VoThanhTrong_2121110273_DoAnWindowsForms
                 return; // Dừng thực thi ở đây
             }
             //thiết lập câu truy vấn
-            query = "select username , pass from employee where username ='" + txtUsername.Text + "' and pass='" + txtPassword.Text +"' ";
-           
-            DataSet ds = fn.getData(query);//Tạo đối tượng DataSet và truyền câu truy vấn để lấy dữ liệu
-            if (ds.Tables[0].Rows.Count != 0)
+            bool isValidLogin = EmployeeDAL.ValidateLogin(txtUsername.Text, txtPassword.Text);
+            if (isValidLogin)
             {
                 labelError.Visible = false;//Ẩn câu thông báo lỗi
                 Dashboard dash = new Dashboard();//Tạo đối tượng DashBoard 
